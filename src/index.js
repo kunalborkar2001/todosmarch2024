@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
 mongoose
     .connect(MONGODB_URI)
     .then(() => {
-        console.log("Connected to mongoDB ❤️");
+        console.log("Connected to MongoDB ");
     })
     .catch((err) => console.log("Could not connect"))
 

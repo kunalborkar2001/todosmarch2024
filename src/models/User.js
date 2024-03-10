@@ -1,10 +1,12 @@
 const { default: mongoose } = require("mongoose");
+const bcrypt = require("bcryptjs")
 
 const userSchema = new mongoose.Schema(
     {
         username: {
             type: String,
             required: true,
+            unique : true,
 
         },
         email: {
@@ -23,6 +25,14 @@ const userSchema = new mongoose.Schema(
     },
 
 )
+
+
+userSchema.methods.comparePassword = async function(userPassword) {
+    // console.log("Current user in db: ", this);
+    // console.log("password: " , userPassword);
+
+    return await bcrypt.compare(userPassword, this.password)
+}
 
 const User = mongoose.model("User", userSchema)
 
