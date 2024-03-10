@@ -4,6 +4,7 @@ const { default: mongoose } = require("mongoose")
 const app = express()
 
 const authRoutes = require("./routes/authRoutes")
+const taskRoutes = require("./routes/taskRoutes")
 
 
 const PORT = process.env.PORT || 8000
@@ -13,6 +14,7 @@ app.use(express.json())
 
 //Routes
 app.use("/api/auth" , authRoutes)
+app.use("/api/tasks" , taskRoutes)
 
 
 app.get("/", (req, res) => {

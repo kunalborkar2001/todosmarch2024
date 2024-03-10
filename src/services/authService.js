@@ -41,14 +41,14 @@ const loginUser = async (userData) => {
         if (!user) {
             throw new Error("This email is not registered")
         }
-    
+
         const passwordCheck = await user.comparePassword(password)
-        
-        if(!passwordCheck) {
+
+        if (!passwordCheck) {
             throw new Error("Invalid Password")
         }
-        
-        const token = jwt.sign({id : user._id}, process.env.JWT_SECRET)
+
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET)
 
         return { token, user }
 
