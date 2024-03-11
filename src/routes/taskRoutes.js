@@ -9,7 +9,7 @@ router.post("/", authanticateToken, taskController.createTask)
 
 
 // GET all the tasks
-router.get("/all", authanticateToken, taskController.getAllTasks)
+router.get("/", authanticateToken, taskController.getAllTasks)
 
 
 // GET a specific task

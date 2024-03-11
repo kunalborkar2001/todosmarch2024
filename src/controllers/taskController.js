@@ -3,9 +3,9 @@ const taskService = require("../services/taskService")
 
 const createTask = async (req, res) => {
     try {
-        const { title, description, isCompletedTask, priority } = req.body
-        console.log(res.body);
-        const userId = req.user.id
+        const { title, description, isCompletedTask, priority } = req.body; // Accessing req.body instead of res.body
+        console.log("req.body: ", req.body); // Logging req.body instead of res.body
+        const userId = req.user.id;
 
         const task = await taskService.createTask({
             title,
@@ -13,15 +13,14 @@ const createTask = async (req, res) => {
             isCompletedTask,
             priority,
             userId
-        })
+        });
 
-        res.status(201).json(task)
-
-
+        res.status(201).json(task);
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        res.status(500).json({ message: error.message });
     }
 }
+
 
 
 const getAllTasks = async (req, res) => {
